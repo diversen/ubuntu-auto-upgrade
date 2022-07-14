@@ -104,7 +104,7 @@ class AptAutoUpgrade
         // Fail silently on mail errros
         try {
             $message .= "Mail sent: " . $this->get_datetime();
-            $this->smtp->sendMarkdown($this->send_to, $subject, $message);
+            $this->smtp->send($this->send_to, $subject, $message, nl2br($message));
         } catch (Exception $e) {
             $this->log->error($e->getMessage());
         }
@@ -149,7 +149,7 @@ class AptAutoUpgrade
                 $this->log->notice('Server upgraded');
 
                 $subject  = "Server ($server_name) upgraded with success";
-                $message = "Server ($server_name) was updated. \n\n";
+                $message = "Server ($server_name) was updated.\n\n";
 
                 if ($this->needs_restart()) {
                     $message .= "The server needs to be restarted\n\n";
@@ -157,9 +157,9 @@ class AptAutoUpgrade
 
                 if ($this->should_restart()) {
                     touch($this->lock_file);
-                    $message .= "Server will try to restart automatically \n\n";
+                    $message .= "Server will try to restart automatically\n\n";
                 } else {
-                    $message .= "You will need to do this manually \n\n";
+                    $message .= "You will need to do this manually\n\n";
                 }
 
                 $this->send_mail($subject, $message);
@@ -178,7 +178,7 @@ class AptAutoUpgrade
 
             $subject = "Server ($server_name) upgrade failed";
             $message = "There was an error while trying to upgrade the server:\n\n"; 
-            $message.= "> " . ExceptionTrace::get($e);
+            $message.= ExceptionTrace::get($e) . "\n\n";
             $this->send_mail($subject, $message);
 
             exit(1);
