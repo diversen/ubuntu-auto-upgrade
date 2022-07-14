@@ -17,7 +17,7 @@ class AptAutoUpgrade
     private $smtp;
     private $send_to;
     private $cli_utils;
-    protected $restart_lock = 'restart.lock';
+    protected $lock_file = './restart.lock';
 
     public function __construct()
     {
@@ -73,12 +73,12 @@ class AptAutoUpgrade
     function upgrade()
     {
 
-        $command = "apt-get upgrade";
+        $command = "apt-get upgrade -y";
         $res = $this->cli_utils->execSilent($command);
 
-        if ($res) {
+        if ($res) {            
             throw new Exception($this->cli_utils->getStderr());
-        }
+        }        
     }
 
     function needs_restart()
@@ -86,7 +86,9 @@ class AptAutoUpgrade
         try {
             file_get_contents('/var/run/reboot-required');
             return true;
-        } catch (Exception $e) {}
+        } catch (Exception $e) {
+            
+        }
     }
 
     function should_restart()
@@ -110,7 +112,7 @@ class AptAutoUpgrade
 
     function restart()
     {
-        $res = $this->cli_utils->execSilent('shutdown -r +1');
+        $res = $this->cli_utils->execSilent('/sbin/shutdown -r +1');
 
         if ($res) {
             throw new Exception($this->cli_utils->getStderr());
@@ -130,18 +132,19 @@ class AptAutoUpgrade
             $server_name = $this->get_hostname();
 
             // Check if server has been restarted
-            if (file_exists($this->restart_lock)) {
+            if (file_exists($this->lock_file)) {
 
                 $subject  = "Server ($server_name) restarted with success";
                 $message = "Server ($server_name) was restarted. \n\n";
-                unlink($this->restart_lock);
-
+                unlink($this->lock_file);
+                $this->log->message('Removed lock file: ' . $this->lock_file);
                 $this->send_mail($subject, $message);
                 return 0;
             }
 
             if ($this->has_updates()) {
 
+                $this->log->notice('Server has upgrade. Will try to upgrade');
                 $this->upgrade();
                 $this->log->notice('Server upgraded');
 
@@ -153,7 +156,7 @@ class AptAutoUpgrade
                 }
 
                 if ($this->should_restart()) {
-                    touch($this->restart_lock);
+                    touch($this->lock_file);
                     $message .= "Server will try to restart automatically \n\n";
                 } else {
                     $message .= "You will need to do this manually \n\n";
@@ -162,7 +165,7 @@ class AptAutoUpgrade
                 $this->send_mail($subject, $message);
 
                 if ($this->should_restart()) {
-                    touch($this->restart_lock);
+                    touch($this->lock_file);
                     $this->restart();
                     $this->log->notice('Server restarting in one minut');
                 }

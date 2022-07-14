@@ -30,7 +30,7 @@ root, e.g.:
 
 Add the crontab line:
 
-    */2 * * * * cd /home/dennis/auto-update-ubuntu && php cron.php
+    */5 * * * * cd /home/dennis/auto-update-ubuntu && php cron.php
 
 ## Logs
 
