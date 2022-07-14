@@ -7,7 +7,6 @@ use Pebble\Service\LogService;
 use Pebble\ExceptionTrace;
 
 use function Safe\touch;
-use function Safe\file_get_contents;
 use function Safe\unlink;
 
 class AptAutoUpgrade
@@ -83,11 +82,8 @@ class AptAutoUpgrade
 
     function needs_restart()
     {
-        try {
-            file_get_contents('/var/run/reboot-required');
+        if (file_exists('/var/run/reboot-required')) {
             return true;
-        } catch (Exception $e) {
-            
         }
     }
 
