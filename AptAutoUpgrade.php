@@ -17,7 +17,7 @@ class AptAutoUpgrade
     private $smtp;
     private $send_to;
     private $cli_utils;
-    protected $lock_file = 'restarted.lock';
+    protected $restart_lock = 'restart.lock';
 
     public function __construct()
     {
@@ -132,11 +132,11 @@ class AptAutoUpgrade
             $server_name = $this->get_hostname();
 
             // Check if server has been restarted
-            if (file_exists($this->lock_file)) {
+            if (file_exists($this->restart_lock)) {
 
                 $subject  = "Server ($server_name) restarted with success";
                 $message = "Server ($server_name) was restarted. \n\n";
-                unlink($this->lock_file);
+                unlink($this->restart_lock);
 
                 $this->send_mail($subject, $message);
                 return 0;
@@ -151,18 +151,20 @@ class AptAutoUpgrade
                 $message = "Server ($server_name) was updated. \n\n";
 
                 if ($this->needs_restart()) {
-                    touch($this->lock_file);
-                    $message .= "Note. The server needs to be restarted\n\n";
+                    $message .= "The server needs to be restarted\n\n";
                 }
 
                 if ($this->should_restart()) {
-                    $message .= "Server will try to restart\n\n";
+                    touch($this->restart_lock);
+                    $message .= "Server will try to restart automatically \n\n";
+                } else {
+                    $message .= "You will need to do this manually \n\n";
                 }
 
                 $this->send_mail($subject, $message);
 
                 if ($this->should_restart()) {
-                    touch($this->lock_file);
+                    touch($this->restart_lock);
                     $this->restart();
                     $this->log->notice('Server restarting in one minut');
                 }
