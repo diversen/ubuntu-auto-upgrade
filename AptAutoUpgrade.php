@@ -144,7 +144,7 @@ class AptAutoUpgrade
 
             if ($this->has_updates()) {
 
-                $this->log->notice('Server should be upgrade. Will now try to upgrade');
+                $this->log->notice('Server should be upgraded. Will now try to upgrade');
                 $this->upgrade();
                 $this->log->notice('Server upgraded');
 
