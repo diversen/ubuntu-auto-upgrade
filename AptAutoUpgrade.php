@@ -133,7 +133,7 @@ class AptAutoUpgrade
                 $subject  = "Server ($server_name) restarted with success";
                 $message = "Server ($server_name) was restarted. \n\n";
                 unlink($this->lock_file);
-                $this->log->message('Removed lock file: ' . $this->lock_file);
+                $this->log->notice('Removed lock file: ' . $this->lock_file);
                 $this->send_mail($subject, $message);
                 return 0;
             }
