@@ -144,7 +144,7 @@ class AptAutoUpgrade
 
             if ($this->has_updates()) {
 
-                $this->log->notice('Server has upgrade. Will try to upgrade');
+                $this->log->notice('Server should be upgrade. Will now try to upgrade');
                 $this->upgrade();
                 $this->log->notice('Server upgraded');
 
@@ -177,7 +177,8 @@ class AptAutoUpgrade
             $this->log->error($e->getMessage(), ['exception' => ExceptionTrace::get($e)]);
 
             $subject = "Server ($server_name) upgrade failed";
-            $message = "There was an error while trying to upgrade the server: " . ExceptionTrace::get($e);
+            $message = "There was an error while trying to upgrade the server:\n\n"; 
+            $message.= "    " . ExceptionTrace::get($e);
             $this->send_mail($subject, $message);
 
             exit(1);
