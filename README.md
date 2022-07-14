@@ -23,8 +23,7 @@ You may also set `timezone`.
 ## Cron
 
 Set the script up as a cron script. Let it run every 10 minutes of so.
-You will need to let the script run as root. Edit crontab while
-root, e.g.: 
+You will need to let the script run as root. Edit crontab as `sudo`, e.g.: 
 
     sudo crontab -e
 
