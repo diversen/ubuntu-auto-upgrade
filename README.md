@@ -1,6 +1,9 @@
 # auto-update-ubuntu
 
 This script will auto-upgrade ubuntu and send email notifications using SMTP. 
+It it will probably also work with other Debian variants of linux.
+
+Tested on 20.04 LTS
 
 ## Install
 

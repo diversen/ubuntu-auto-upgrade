@@ -75,9 +75,9 @@ class AptAutoUpgrade
         $command = "apt-get upgrade -y";
         $res = $this->cli_utils->execSilent($command);
 
-        if ($res) {            
+        if ($res) {
             throw new Exception($this->cli_utils->getStderr());
-        }        
+        }
     }
 
     function needs_restart()
@@ -135,7 +135,7 @@ class AptAutoUpgrade
                 unlink($this->lock_file);
                 $this->log->notice('Removed lock file: ' . $this->lock_file);
                 $this->send_mail($subject, $message);
-                return 0;
+                exit(0);
             }
 
             if ($this->has_updates()) {
@@ -173,8 +173,8 @@ class AptAutoUpgrade
             $this->log->error($e->getMessage(), ['exception' => ExceptionTrace::get($e)]);
 
             $subject = "Server ($server_name) upgrade failed";
-            $message = "There was an error while trying to upgrade the server:\n\n"; 
-            $message.= ExceptionTrace::get($e) . "\n\n";
+            $message = "There was an error while trying to upgrade the server:\n\n";
+            $message .= ExceptionTrace::get($e) . "\n\n";
             $this->send_mail($subject, $message);
 
             exit(1);

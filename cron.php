@@ -5,4 +5,3 @@ include_once "AptAutoUpgrade.php";
 
 $apt_auto_upgrade = new AptAutoUpgrade();
 $apt_auto_upgrade->run();
-exit();
