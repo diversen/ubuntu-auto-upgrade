@@ -178,7 +178,7 @@ class AptAutoUpgrade
 
             $subject = "Server ($server_name) upgrade failed";
             $message = "There was an error while trying to upgrade the server:\n\n"; 
-            $message.= "    " . ExceptionTrace::get($e);
+            $message.= "> " . ExceptionTrace::get($e);
             $this->send_mail($subject, $message);
 
             exit(1);
