@@ -22,8 +22,14 @@ You can also set `timezone`.
 
 ## Cron
 
-Set the script up as a cron script. Let et run every 5 minutes of so.
-You will need to run the script as root.
+Set the script up as a cron script. Let it run every 5 minutes of so.
+You will need to let the script run as root. Edit crontab while
+root, e.g.: 
+
+    sudo su
+    crontab -e
+
+Add the crontab line:
 
     */5 * * * * cd /home/dennis/auto-update-ubuntu && php cron.php
 
