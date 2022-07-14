@@ -86,9 +86,7 @@ class AptAutoUpgrade
         try {
             file_get_contents('/var/run/reboot-required');
             return true;
-        } catch (Exception $e) {
-            return false;
-        }
+        } catch (Exception $e) {}
     }
 
     function should_restart()

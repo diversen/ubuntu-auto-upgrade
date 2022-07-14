@@ -17,8 +17,8 @@ Create config files:
 Edit SMTP settings in `config-locale/SMTP.php`. 
 `DefaultTo` setting in SMTP is the email address of the person who will receive emails. 
 
-You can also edit `config-locale/App.php`. `restart` determines if the server will restart if needed. 
-You can also set `timezone`. 
+You can also edit `config-locale/App.php`. `restart` determines if the server should restart if needed. 
+You may also set `timezone`. 
 
 ## Cron
 
