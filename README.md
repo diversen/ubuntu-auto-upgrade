@@ -31,3 +31,7 @@ You will need to run the script as root.
 
 Logs are written to `logs/main.log`
 
+# License
+
+MIT © [Dennis Iversen](https://github.com/diversen)
+
