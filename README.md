@@ -34,7 +34,7 @@ Add the crontab line:
 
 ## Logs
 
-Logs are written to `logs/main.log`
+Logs are written to `logs/main.log`. This log file will be created if it does not exist.  
 
 # License
 
