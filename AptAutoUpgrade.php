@@ -87,7 +87,7 @@ class AptAutoUpgrade
         }
     }
 
-    function should_restart()
+    function should_auto_restart()
     {
 
         if ($this->needs_restart() && $this->config->get('App.restart')) {
@@ -148,18 +148,17 @@ class AptAutoUpgrade
 
                 if ($this->needs_restart()) {
                     $message .= "The server needs to be restarted\n\n";
-                }
-
-                if ($this->should_restart()) {
-                    touch($this->lock_file);
-                    $message .= "Server will try to restart automatically\n\n";
-                } else {
-                    $message .= "You will need to do this manually\n\n";
+                    if ($this->should_auto_restart()) {
+                        touch($this->lock_file);
+                        $message .= "Server will try to restart automatically\n\n";
+                    } else {
+                        $message .= "You will need to restart the server manually\n\n";
+                    }
                 }
 
                 $this->send_mail($subject, $message);
 
-                if ($this->should_restart()) {
+                if ($this->should_auto_restart()) {
                     touch($this->lock_file);
                     $this->restart();
                     $this->log->notice('Server restarting in one minut');

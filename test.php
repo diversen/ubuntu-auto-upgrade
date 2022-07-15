@@ -18,7 +18,7 @@ class TestAptAutoUpgrade extends AptAutoUpgrade
         var_dump("Server needs restart ", $this->needs_restart());
         var_dump("Sever has updates ", $this->has_updates());
         var_dump("Sever hostname is ", $this->get_hostname());
-        var_dump("Should restart ", $this->should_restart());
+        var_dump("Should restart ", $this->should_auto_restart());
         var_dump("date ", $this->get_datetime());
         var_dump("Create lock file", touch($this->lock_file));
     }
