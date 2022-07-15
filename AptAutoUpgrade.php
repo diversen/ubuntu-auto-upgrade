@@ -143,8 +143,8 @@ class AptAutoUpgrade
                 $this->upgrade();
                 $this->log->notice('Server upgraded');
 
-                $subject  = "Server ($server_name) upgraded with success";
-                $message = "Server ($server_name) was updated.\n\n";
+                $subject = "Server ($server_name) upgraded with success";
+                $message = "Server ($server_name) was upgraded.\n\n";
 
                 if ($this->needs_restart()) {
                     $message .= "The server needs to be restarted\n\n";
