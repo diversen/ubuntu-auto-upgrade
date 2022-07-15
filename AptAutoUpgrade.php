@@ -1,10 +1,11 @@
 <?php
 
 use Pebble\SMTP;
-use Diversen\Cli\Utils as CliUtils;
 use Pebble\Service\ConfigService;
 use Pebble\Service\LogService;
 use Pebble\ExceptionTrace;
+use Pebble\Special;
+use Diversen\Cli\Utils as CliUtils;
 
 use function Safe\touch;
 use function Safe\unlink;
@@ -31,7 +32,6 @@ class AptAutoUpgrade
 
     public function get_hostname()
     {
-
         $res = $this->cli_utils->execSilent('hostname');
         if ($res) {
             throw new Exception('Could not get server hostname');
@@ -173,7 +173,7 @@ class AptAutoUpgrade
 
             $subject = "Server ($server_name) upgrade failed";
             $message = "There was an error while trying to upgrade the server:\n\n";
-            $message .= ExceptionTrace::get($e) . "\n\n";
+            $message .= Special::encodeStr(ExceptionTrace::get($e)) . "\n\n";
             $this->send_mail($subject, $message);
 
             exit(1);
