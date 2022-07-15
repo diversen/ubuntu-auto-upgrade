@@ -130,7 +130,7 @@ class AptAutoUpgrade
             // Check if server has been restarted
             if (file_exists($this->lock_file)) {
 
-                $subject  = "Server ($server_name) restarted with success";
+                $subject = "Server ($server_name) restarted with success";
                 $message = "Server ($server_name) was restarted. \n\n";
                 unlink($this->lock_file);
                 $this->log->notice('Removed lock file (restart success): ' . $this->lock_file);
