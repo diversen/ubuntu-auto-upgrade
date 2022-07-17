@@ -149,7 +149,6 @@ class AptAutoUpgrade
                 if ($this->needs_restart()) {
                     $message .= "The server needs to be restarted\n\n";
                     if ($this->should_auto_restart()) {
-                        touch($this->lock_file);
                         $message .= "Server will try to restart automatically\n\n";
                     } else {
                         $message .= "You will need to restart the server manually\n\n";
