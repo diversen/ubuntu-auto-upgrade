@@ -30,7 +30,7 @@ You will need to let the script run as root. Edit crontab as `sudo`, e.g.:
 
     sudo crontab -e
 
-Add the crontab line:
+Add the crontab line (change to your own source path):
 
     */10 * * * * cd /home/dennis/ubuntu-auto-upgrade && php cron.php
 
