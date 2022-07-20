@@ -3,7 +3,7 @@
 // Configuration for PHPMailer
 return [
     'DefaultFrom' => 'mail@10kilobyte.com',
-    'DefaultFromName' => 'Time Manager',
+    'DefaultFromName' => 'System',
     'Host' => 'smtp-relay.sendinblue.com',
     'Port' => 587,
     'SMTPAuth' => true,

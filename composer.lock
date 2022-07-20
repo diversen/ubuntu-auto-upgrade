@@ -50,16 +50,16 @@
         },
         {
             "name": "diversen/minimal-cli-framework",
-            "version": "v6.0.0",
+            "version": "v6.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/diversen/minimal-cli-framework.git",
-                "reference": "a8ad090cf8be1c9342ed1566c8b99974021f32d0"
+                "reference": "d7ad425ed3dc3bfd2be6f20e81d46dc7309eb89b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/diversen/minimal-cli-framework/zipball/a8ad090cf8be1c9342ed1566c8b99974021f32d0",
-                "reference": "a8ad090cf8be1c9342ed1566c8b99974021f32d0",
+                "url": "https://api.github.com/repos/diversen/minimal-cli-framework/zipball/d7ad425ed3dc3bfd2be6f20e81d46dc7309eb89b",
+                "reference": "d7ad425ed3dc3bfd2be6f20e81d46dc7309eb89b",
                 "shasum": ""
             },
             "require": {
@@ -86,9 +86,9 @@
             "description": "A very fast and simple CLI framework",
             "support": {
                 "issues": "https://github.com/diversen/minimal-cli-framework/issues",
-                "source": "https://github.com/diversen/minimal-cli-framework/tree/v6.0.0"
+                "source": "https://github.com/diversen/minimal-cli-framework/tree/v6.0.2"
             },
-            "time": "2022-07-06T14:10:38+00:00"
+            "time": "2022-07-19T10:17:07+00:00"
         },
         {
             "name": "diversen/parse-argv",
@@ -140,16 +140,16 @@
         },
         {
             "name": "diversen/pebble-framework",
-            "version": "v6.2.0",
+            "version": "v6.2.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/diversen/pebble-framework.git",
-                "reference": "745375c10f0380bf6b595a8f781b7533485ce002"
+                "reference": "8096e0678904b4ef85fb60906fbb7ccd72954605"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/diversen/pebble-framework/zipball/745375c10f0380bf6b595a8f781b7533485ce002",
-                "reference": "745375c10f0380bf6b595a8f781b7533485ce002",
+                "url": "https://api.github.com/repos/diversen/pebble-framework/zipball/8096e0678904b4ef85fb60906fbb7ccd72954605",
+                "reference": "8096e0678904b4ef85fb60906fbb7ccd72954605",
                 "shasum": ""
             },
             "require": {
@@ -160,6 +160,7 @@
                 "diversen/simple-php-translation": "^3.0",
                 "erusev/parsedown": "^1.7",
                 "gregwar/captcha": "^1.1",
+                "monolog/monolog": "^2.7",
                 "phpmailer/phpmailer": "^6.0",
                 "phpunit/phpunit": "^9.5"
             },
@@ -189,9 +190,9 @@
             ],
             "support": {
                 "issues": "https://github.com/diversen/pebble-framework/issues",
-                "source": "https://github.com/diversen/pebble-framework/tree/v6.2.0"
+                "source": "https://github.com/diversen/pebble-framework/tree/v6.2.5"
             },
-            "time": "2022-07-08T13:47:57+00:00"
+            "time": "2022-07-20T10:26:29+00:00"
         },
         {
             "name": "erusev/parsedown",
