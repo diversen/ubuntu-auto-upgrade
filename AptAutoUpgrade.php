@@ -72,7 +72,7 @@ class AptAutoUpgrade
     function upgrade()
     {
 
-        $command = "apt-get upgrade -y";
+        $command = "apt-get upgrade --with-new-pkgs -y";
         $res = $this->cli_utils->execSilent($command);
 
         if ($res) {
