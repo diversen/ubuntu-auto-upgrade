@@ -1,4 +1,5 @@
 restart.lock
+composer.lock
 config-locale
 vendor
 logs
