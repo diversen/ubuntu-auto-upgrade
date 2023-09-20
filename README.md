@@ -7,7 +7,7 @@ Tested on Ubuntu 20.04 LTS and 22.04 LTS
 
 ## Install
 
-    git clone git@github.com:diversen/ubuntu-auto-upgrade.git
+    git clone https://github.com/diversen/ubuntu-auto-upgrade.git
     cd ubuntu-auto-upgrade
     composer install
 
