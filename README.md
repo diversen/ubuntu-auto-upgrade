@@ -5,6 +5,9 @@ It will probably also work with other Debian variants of linux.
 
 Tested on Ubuntu 20.04 LTS and 22.04 LTS
 
+If you prefer python then there is also a python version of these scripts:
+[ubuntu-auto-upgrade-py](https://github.com/diversen/ubuntu-auto-upgrade-py.git)
+
 ## Install
 
     git clone https://github.com/diversen/ubuntu-auto-upgrade.git
